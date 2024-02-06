@@ -15,7 +15,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const info = document.getElementById("rules")
+const info1 = document.getElementById("tab-1")
+const info2 = document.getElementById("tab-2")
 
 async function getBasketball(db) {
     const basCol = collection(db, "Basketballrules")
@@ -31,13 +32,13 @@ function showData(bas) {
     const fibaButton = document.getElementById("fibaButton");
 
     rules.push(rulesDoc);
-    info.innerHTML = rules[1];
+    info1.innerHTML = rules[1];
     nbaButton.addEventListener("click", function () {
-        info.innerHTML = rules[1];
+        info1.innerHTML = rules[1];
     });
 
     fibaButton.addEventListener("click", function () {
-        info.innerHTML = rules[0];
+        info2.innerHTML = rules[0];
     });
 }
 //ดึงข้อมูล Docs  shoes เก็บไว้ในตัวแปร data

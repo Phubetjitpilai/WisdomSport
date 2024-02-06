@@ -213,7 +213,11 @@ h6,
 .blog-item:hover img {
     transform: scale(1.2);
 }
-
+iframe{
+    height: 40vw;
+    aspect-ratio: 16/9;
+    width:auto;
+}
 @media (min-width: 991.98px) {
     .credit {
         background: var(--primary);
