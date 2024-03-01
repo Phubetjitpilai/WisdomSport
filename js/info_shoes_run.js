@@ -39,6 +39,12 @@ const pic3 = document.getElementById("pic3")
 const pic4 = document.getElementById("pic4")
 const pic5 = document.getElementById("pic5")
 
+const Shop1 = document.getElementById("Shop1")
+const Shop2 = document.getElementById("Shop2")
+const Shop3 = document.getElementById("Shop3")
+const Shop4 = document.getElementById("Shop4")
+const Shop5 = document.getElementById("Shop5")
+
 async function getBasketball(db){
     const  basCol = collection(db,"Runningshoes")
     const  basSnapshot = await getDocs(basCol,"Shoes")
@@ -50,10 +56,12 @@ let names = [];
 let infos = [];
 let videos =[];
 let pics =[];
+let shop =[];
 let infoId = [info1,info2,info3,info4,info5];
 let nameId = [name1,name2,name3,name4,name5];
 let reviewId = [review1,review2,review3,review4,review5];
 let picId = [pic1,pic2,pic3,pic4,pic5];
+let shopId = [Shop1,Shop2,Shop3,Shop4,Shop5];
 
 
 function showData(bas){
@@ -61,11 +69,13 @@ function showData(bas){
     const shoes_info =  bas.data().info;
     const shoes_review = bas.data().review;
     const shoes_pic = bas.data().URL;
+    const shoes_shop = bas.data().shop;
 
     names.push(shoes_name);
     infos.push(shoes_info);
     videos.push(shoes_review);
     pics.push(shoes_pic);
+    shop.push(shoes_shop);
 
     for (let i = 0; i < infoId.length; i++) {
         infoId[i].innerHTML=infos[i];
@@ -81,9 +91,14 @@ function showData(bas){
         picId[i].src=pics[i];
     }
 
+    for (let i = 0; i < shopId.length; i++) {
+        shopId[i].innerHTML = '<button class="btn btn-dark text-center" onclick="window.location.href=\'' + shop[i] + '\'">GO TO SHOP</button>';
+    }
+
     }
 //ดึงข้อมูล Docs  shoes เก็บไว้ในตัวแปร data
 const data = await getBasketball(db)
 data.forEach(bas=>{
     showData(bas)
 })
+
